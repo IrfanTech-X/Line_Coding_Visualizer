@@ -1,0 +1,198 @@
+
+/* --- Base & Variables --- */
+:root {
+    --font-family-sans-serif: 'Poppins', sans-serif;
+    --primary-color: #0077b6;
+    --secondary-color: #00b4d8;
+    --tertiary-color: #90e0ef;
+    --accent-color: #ffb703;
+    --success-color: #2a9d8f;
+    --danger-color: #e76f51;
+    --warning-color: #fca311;
+    --light-bg: #edf6f9;
+    --dark-text: #023047;
+    --mid-point-line: #6c757d;
+}
+
+body {
+    font-family: var(--font-family-sans-serif);
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+}
+
+.navbar.custom-navbar {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+}
+
+.config-card {
+    border-left: 5px solid var(--accent-color);
+    border-radius: 12px;
+}
+
+.config-input {
+    border-radius: 8px;
+}
+
+.btn-gradient {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+}
+
+.status-controls-bar {
+    background-color: var(--tertiary-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.stage-card {
+    border-top: 3px solid var(--primary-color);
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.stage-input {
+    border-top-color: var(--accent-color);
+}
+
+.stage-encoding {
+    border-top-color: var(--success-color);
+}
+
+.stage-transmission {
+    border-top-color: var(--warning-color);
+}
+
+.stage-output {
+    border-top-color: var(--primary-color);
+}
+
+.output-data {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+.binary-animated {
+    color: var(--primary-color);
+    font-weight: bold;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {opacity: 1;}
+    50% {opacity: 0.6;}
+    100% {opacity: 1;}
+}
+
+.bit-display {
+    font-size: 1.25rem;
+    padding: 6px 12px;
+    border-radius: 10px;
+}
+
+.encoder-box, .decoder-box {
+    background: var(--secondary-color);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+}
+
+.final-output-alert {
+    background: var(--success-color);
+    color: white;
+    border-radius: 10px;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.legend-item {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    background-color: var(--light-bg);
+    border: 1px solid #ccc;
+}
+
+.legend-item.high-level { background-color: var(--success-color); color: white; }
+.legend-item.low-level { background-color: var(--danger-color); color: white; }
+.legend-item.transition-line { background-color: var(--mid-point-line); color: white; }
+.legend-item.bit-boundary { background-color: var(--accent-color); color: white; }
+.legend-item.error-marker { background-color: var(--danger-color); color: #fff; border: 1px dashed #fff; }
+
+/* Centering Canvas */
+.stage-transmission .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 1rem;
+}
+
+canvas#signalCanvas {
+    max-width: 100%;
+    height: auto;
+    border-top: 2px dashed var(--mid-point-line);
+    border-bottom: 2px dashed var(--mid-point-line);
+    background-color: #fdfdfd;
+}
+
+/* Responsive Fixes */
+@media (max-width: 767.98px) {
+    .animation-stage {
+        margin-bottom: 1rem;
+    }
+
+    .decoder-box, .encoder-box {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Transmission Signal Enhancements */
+canvas#signalCanvas {
+    max-width: 100%;
+    height: auto;
+    border-top: 3px solid var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 119, 182, 0.4); /* Subtle glow effect */
+    margin-top: 10px;
+}
+
+/* Make transmission line colors brighter */
+/* Updated signal line with a deeper red-orange */
+.signal-line {
+    stroke: var(--danger-color); /* Keep the bright color for contrast */
+    stroke-width: 3px;
+}
+
+/* Deepen the color for glowing pulse effect */
+.signal-pulse {
+    animation: pulse-glow 1s ease-in-out infinite;
+}
+
+/* Update glow effect with stronger intensity */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 10px var(--danger-color); /* More intense initial glow */
+    }
+    50% {
+        box-shadow: 0 0 30px var(--danger-color); /* More prominent glow in the middle of animation */
+    }
+    100% {
+        box-shadow: 0 0 10px var(--danger-color); /* Reduce glow intensity towards the end */
+    }
+}
+
